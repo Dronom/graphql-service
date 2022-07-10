@@ -4,11 +4,12 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { DirectiveLocation, GraphQLDirective } from 'graphql';
 import { ConfigModule } from '@nestjs/config';
 
-import { UsersModule } from './modules';
+import { UsersModule, GenresModule } from './modules';
 
 @Module({
   imports: [
     UsersModule,
+    GenresModule,
     ConfigModule.forRoot(),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
