@@ -1,0 +1,41 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+directive @upper on FIELD_DEFINITION
+
+"""user"""
+type User {
+  _id: ID!
+  email: String!
+  password: String!
+  firstName: String
+  secondName: String
+  middleName: String
+}
+
+type JWT {
+  jwt: String
+}
+
+type Query {
+  user(id: String!): User!
+  jwt(login: LoginUser!): JWT!
+}
+
+input LoginUser {
+  password: String!
+  email: String!
+}
+
+type Mutation {
+  register(createUser: CreateUser!): User!
+}
+
+input CreateUser {
+  email: String!
+  password: String!
+  firstName: String
+  lastName: String
+  middleName: String
+}
