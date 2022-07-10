@@ -1,0 +1,143 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+directive @upper on FIELD_DEFINITION
+
+"""user"""
+type User {
+  _id: ID!
+  email: String!
+  password: String!
+  firstName: String
+  secondName: String
+  middleName: String
+}
+
+type JWT {
+  jwt: String
+}
+
+type Genre {
+  id: ID!
+  name: String
+  description: String
+  country: String
+  year: Int
+}
+
+type Member {
+  _id: ID!
+  firstName: String
+  secondName: String
+  middleName: String
+  instrument: String
+  years: [String!]
+}
+
+type Band {
+  id: ID!
+  name: String
+  origin: String
+  members: [Member]
+  website: String
+  genres: [Genre]
+}
+
+type Artist {
+  id: ID!
+  firstName: String
+  secondName: String
+  middleName: String
+  birthDate: String
+  birthPlace: String
+  country: String
+  bands: [Band]
+  instruments: [String]
+}
+
+type Album {
+  id: ID!
+  name: String
+  released: Int
+  artists: [Artist]
+  bands: [Band]
+  tracks: [Track]
+  genres: [Genre]
+  image: String
+}
+
+type Track {
+  id: ID!
+  title: String!
+  album: Album
+  artists: [Artist]
+  bands: [Band]
+  duration: Int
+  released: Int
+  genres: [Genre]
+}
+
+type Query {
+  user(id: String!): User!
+  jwt(login: LoginUser!): JWT!
+  genre(id: ID!): Genre!
+  track(id: ID!): Track!
+}
+
+input LoginUser {
+  password: String!
+  email: String!
+}
+
+type Mutation {
+  register(createUser: CreateUser!): User!
+  createGenre(createGenre: CreateGenre!): Genre!
+  updateGenre(updateGenre: UpdateGenre!): Genre!
+  createTrack(createTrack: CreateTrack!): Track!
+  updateTrack(updateTrack: UpdateTrack!): Track!
+}
+
+input CreateUser {
+  email: String!
+  password: String!
+  firstName: String
+  lastName: String
+  middleName: String
+}
+
+input CreateGenre {
+  name: String
+  description: String
+  country: String
+  year: Int
+}
+
+input UpdateGenre {
+  name: String
+  description: String
+  country: String
+  year: Int
+  id: ID!
+}
+
+input CreateTrack {
+  title: String!
+  duration: Int
+  released: Int
+  albumId: String
+  artistsIds: [String!]
+  bandsIds: [String!]
+  genresIds: [String!]
+}
+
+input UpdateTrack {
+  title: String
+  duration: Int
+  released: Int
+  albumId: String
+  artistsIds: [String!]
+  bandsIds: [String!]
+  genresIds: [String!]
+  id: ID!
+}
