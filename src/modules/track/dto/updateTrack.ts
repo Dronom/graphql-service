@@ -1,8 +1,8 @@
-import { CreateTrackInput } from './createTrack';
+import { CreateTrack } from './createTrack';
 import { Field, ID, InputType, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateTrackInput extends PartialType(CreateTrackInput) {
+export class UpdateTrack extends PartialType(CreateTrack) {
   @Field(() => ID)
   id: string;
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { CreateTrackInput } from './dto/createTrack';
-import { UpdateTrackInput } from './dto/updateTrack';
+import { CreateTrack } from './dto/createTrack';
+import { UpdateTrack } from './dto/updateTrack';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { Track } from './track.schema';
 
@@ -14,10 +14,10 @@ export class TrackService {
     });
   }
 
-  async create(createTrackInput: CreateTrackInput) {
+  async create(createTrack: CreateTrack) {
     const response: AxiosResponse<Track> = await this.client.post(
       '',
-      createTrackInput,
+      createTrack,
       { headers: { Authorization: process.env.AUTH_TOKEN } },
     );
     return response.data;
@@ -28,10 +28,10 @@ export class TrackService {
     return album.data;
   }
 
-  async update(id: string, updateTrackInput: UpdateTrackInput) {
+  async update(id: string, updateTrack: UpdateTrack) {
     const response: AxiosResponse<Track> = await this.client.put(
       id,
-      updateTrackInput,
+      updateTrack,
       { headers: { Authorization: process.env.AUTH_TOKEN } },
     );
     return response.data;

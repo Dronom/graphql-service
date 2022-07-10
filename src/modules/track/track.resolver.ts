@@ -9,8 +9,8 @@ import {
 } from '@nestjs/graphql';
 import { TrackService } from './track.service';
 import { Track } from './track.schema';
-import { CreateTrackInput } from './dto/createTrack';
-import { UpdateTrackInput } from './dto/updateTrack';
+import { CreateTrack } from './dto/createTrack';
+import { UpdateTrack } from './dto/updateTrack';
 import { GenresService } from '../genres/genres.service';
 
 @Resolver(() => Track)
@@ -21,10 +21,8 @@ export class TrackResolver {
   ) {}
 
   @Mutation(() => Track)
-  async createTrack(
-    @Args('createTrackInput') createTrackInput: CreateTrackInput,
-  ) {
-    return await this.trackService.create(createTrackInput);
+  async createTrack(@Args('createTrack') createTrack: CreateTrack) {
+    return await this.trackService.create(createTrack);
   }
 
   @Query(() => Track, { name: 'track' })
@@ -33,13 +31,8 @@ export class TrackResolver {
   }
 
   @Mutation(() => Track)
-  async updateTrack(
-    @Args('updateTrackInput') updateTrackInput: UpdateTrackInput,
-  ) {
-    return await this.trackService.update(
-      updateTrackInput.id,
-      updateTrackInput,
-    );
+  async updateTrack(@Args('updateTrack') updateTrack: UpdateTrack) {
+    return await this.trackService.update(updateTrack.id, updateTrack);
   }
 
   @ResolveField()

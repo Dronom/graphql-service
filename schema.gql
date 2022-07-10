@@ -94,8 +94,8 @@ type Mutation {
   register(createUser: CreateUser!): User!
   createGenre(createGenre: CreateGenre!): Genre!
   updateGenre(updateGenre: UpdateGenre!): Genre!
-  createTrack(createTrackInput: CreateTrackInput!): Track!
-  updateTrack(updateTrackInput: UpdateTrackInput!): Track!
+  createTrack(createTrack: CreateTrack!): Track!
+  updateTrack(updateTrack: UpdateTrack!): Track!
 }
 
 input CreateUser {
@@ -121,7 +121,7 @@ input UpdateGenre {
   id: ID!
 }
 
-input CreateTrackInput {
+input CreateTrack {
   title: String!
   duration: Int
   released: Int
@@ -131,7 +131,7 @@ input CreateTrackInput {
   genresIds: [String!]
 }
 
-input UpdateTrackInput {
+input UpdateTrack {
   title: String
   duration: Int
   released: Int

@@ -2,7 +2,7 @@ import { Field, InputType, Int } from '@nestjs/graphql';
 import { IsArray } from 'class-validator';
 
 @InputType()
-export class CreateTrackInput {
+export class CreateTrack {
   @Field()
   title: string;
 
