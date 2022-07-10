@@ -1,15 +1,16 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { DirectiveLocation, GraphQLDirective } from 'graphql';
 import { ConfigModule } from '@nestjs/config';
-
-import { UsersModule, GenresModule } from './modules';
+import { UsersModule, GenresModule, TrackModule } from './modules';
 
 @Module({
   imports: [
     UsersModule,
     GenresModule,
+    TrackModule,
     ConfigModule.forRoot(),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
